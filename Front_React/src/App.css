@@ -1,0 +1,54 @@
+
+
+.welcomeTitle {
+    
+    background-size: cover;
+    padding-top: 10%;
+    width: 100%;
+    height: 100%;
+    position:absolute;
+    top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.signupPage {
+    background-size: cover;
+   padding-top: 10%;
+    background-color: aqua;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+.mainPage{
+    
+   padding: 2%;
+    
+    width: 100%;
+    height: 100%;
+    
+}
+.loginB{
+   position:absolute;
+   
+   left: 43%;
+}
+.signupB{
+    position:absolute;
+    
+    left: 49%;
+ }
+
+ .loginBar{
+    background-color: aqua;
+ }
+ .actName{
+    position:relative;
+    left: 80%;
+    display: inline-block;
+ }
