@@ -113,7 +113,7 @@ function Main() {
         }
     }
     
-   let navigate=useNavigate;
+  
 
     return (
 
