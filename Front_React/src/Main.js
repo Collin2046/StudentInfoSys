@@ -119,11 +119,7 @@ function Main() {
 
         <div style={{ backgroundImage: `url(${backimg})` }} className="mainPage">
             <div className="actName">
-            <Avatar sx={{ bgcolor: green[500] }} onClick={ ()=>{
-                return(
-                    <Link to='/signup'/>
-                )
-            }
+            <Avatar sx={{ bgcolor: green[500] }
             } >{head}</Avatar>
             <br/>
             <Button color='warning' variant='contained' size='small' onClick={() => {
