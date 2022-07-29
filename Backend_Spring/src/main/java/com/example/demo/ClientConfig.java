@@ -12,10 +12,11 @@ public class ClientConfig {
     CommandLineRunner commandLineRunner(ClientRepository clientRepository) {
         return arg-> {
             Client collin = new Client("collin", "19971225","Kelin","He");
-            Client yingjie = new Client("lisi", "20020303");
-            Client odin = new Client("wangwu", "1008611");
-            Client Vency = new Client("honghong", "123123");
-            clientRepository.saveAll(List.of(collin,yingjie,odin,Vency));
+            Client yingjie = new Client("ChaoShi", "20020303","Dr","Ren");
+            Client odin = new Client("Yijun ", "1008611","Odin","Yuan");
+            Client Vency = new Client("Vency", "123123","Vency","Li");
+            Client WangHong = new Client("WangHong", "honghong","Hong","Wang");
+            clientRepository.saveAll(List.of(collin,yingjie,odin,Vency,WangHong));
         };
     }
 }

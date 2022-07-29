@@ -41,7 +41,9 @@ public class ClientService {
             //throw new IllegalStateException("The password is not matchable");
         }
         else{
-            return "Success";
+            String ans=find.getFirstname()+" "+find.getLastname();
+
+            return ans;
         }
 
     }
