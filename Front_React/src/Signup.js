@@ -12,7 +12,7 @@ function Signup() {
     
         if (prop) {
             alert("Register successfull");
-            navigate('/')
+            navigate('/login')
         }
         else {
             alert("Fail, please try a new account name");
@@ -53,7 +53,7 @@ function Signup() {
                 <TextField label='Authentication Code' size='small'  onChange={e => setAcode(e.target.value)}></TextField>
             </div>
             <br/>
-            <Button variant='contained' size='small' onClick={() => {if(passwordUp==null||accountUp==null||Acode==null||firstname==null||lastname==null)
+            <Button variant='contained' size='small' onClick={async() => {if(passwordUp==null||accountUp==null||Acode==null||firstname==null||lastname==null)
             {
                 alert("Please complete your account setting")
                 return}

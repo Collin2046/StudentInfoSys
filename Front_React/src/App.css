@@ -33,11 +33,11 @@
     height: 100%;
     
 }
-.loginB{
+/*.loginB{
    position:absolute;
    
    left: 43%;
-}
+}*/
 .signupB{
     position:absolute;
     
@@ -48,7 +48,7 @@
     background-color: aqua;
  }
  .actName{
-    position:relative;
+    position: relative;
     left: 80%;
-    display: inline-block;
+    
  }

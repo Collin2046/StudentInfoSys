@@ -1,17 +1,17 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import backimg from './MainBack.jpg';
 import Button from '@mui/material/Button';
 import { Alert, Avatar, TextField, } from "@mui/material";
-import { deepOrange, deepPurple } from '@mui/material/colors';
+import { deepOrange, deepPurple, green, yellow } from '@mui/material/colors';
 import login from './Login'
 
 
 
 function Main() {
-
+    
     const [id, setId] = useState(null);
     const [name, setName] = useState(null);
     const [age, setAge] = useState(null);
@@ -22,12 +22,20 @@ function Main() {
     const [add, setAdd] = useState(null);
     const [dele, setDele] = useState(null);
     const [update, setUpdate] = useState(null);
-
-    const test=()=>{
-        console.log("hello")
+    
+    var user=sessionStorage.getItem('token');
+    var head=user;
+    var sec;
+    for(var i=0;i<head.length;i++)
+    {
+        if(head[i-1]==" ")
+        {
+            sec=head[i];
+        }
     }
-
-
+    head=head[1];
+    head=head+sec;
+    console.log(head);
     
     const addNew = (e) => {
         if (e == true) {
@@ -105,13 +113,27 @@ function Main() {
         }
     }
     
-
+   let navigate=useNavigate;
 
     return (
 
         <div style={{ backgroundImage: `url(${backimg})` }} className="mainPage">
-            <Avatar sx={{ bgcolor: deepOrange[500] }} className="actName">Ke</Avatar>
-            
+            <div className="actName">
+            <Avatar sx={{ bgcolor: green[500] }} onClick={ ()=>{
+                return(
+                    <Link to='/signup'/>
+                )
+            }
+            } >{head}</Avatar>
+            <br/>
+            <Button color='warning' variant='contained' size='small' onClick={() => {
+                sessionStorage.clear();
+                window.location.reload();
+                
+                
+            }}>Log Out
+            </Button>
+            </div>
             <h1>Add new student</h1>
             <div className="add">
 
@@ -231,7 +253,7 @@ function Main() {
             </div>
             <br />
             <div>
-                {console.log("getoneMain:" + getone)}
+               
                 {getById(getone)}
 
             </div>

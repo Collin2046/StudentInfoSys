@@ -5,31 +5,28 @@ import { Link, useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import { Alert, TextField } from '@mui/material';
 import backimg from './BackImg.jpg';
+import PropTypes from 'prop-types';
 
 
 
 
+export default function Login( {setToken} ) {
 
-export default function Login() {
-    let navigate = useNavigate();
-    
-    
     const signin = (prop) => {
 
-        if (prop === "Success") {
-            alert("Login Successful!")
-            
-            navigate('/main')
+        if (prop == "Have not found this account, would you like to sign up?" || prop == "The password is not matchable") {
+            alert(prop);
         }
         else {
-            alert(prop)
-            navigate('/')
+            alert("Welcome!" + prop);
+            sessionStorage.setItem('token', JSON.stringify(prop));
+            setToken(prop);
         }
     }
 
     const [accountIn, setAccountIn] = useState();
     const [passwordIn, setPasswordIn] = useState();
-    const [res, setRes] = useState("");
+    
     //const [login,setLogIn]=useState();
     return (
         <div className="welcomeTitle" style={{ backgroundImage: `url(${backimg})` }} >
@@ -48,37 +45,38 @@ export default function Login() {
                 </div>
                 <br />
 
-                
-                    <center>
-                        <TextField variant="outlined" size='small' label='Account' onChange={e => setAccountIn(e.target.value)}></TextField>
-                    </center>
-                    <br />
-                    <center>
-                        <TextField variant="outlined" size='small' label='Password' type={"password"} onChange={e => setPasswordIn(e.target.value)}></TextField>
-                    </center>
-                
+
+                <center>
+                    <TextField variant="outlined" size='small' label='Account' onChange={e => setAccountIn(e.target.value)}></TextField>
+                </center>
+                <br />
+                <center>
+                    <TextField variant="outlined" size='small' label='Password' type={"password"} onChange={e => setPasswordIn(e.target.value)}></TextField>
+                </center>
+
 
                 <br />
 
 
             </center>
 
-            <Button className='loginB' color="success" size='small' variant="contained" onClick={() => {
-                axios.post('http://localhost:8080/login/check', {
-                    account: accountIn,
-                    password: passwordIn
-                }).then(function (response) {
-                    // handle success
-                    console.log(response);
-                    signin(response.data);
-                })
-                    .catch(function (error) {
-                        // handle error
-                        console.log(error);
+            <center>
+                <Button className='loginB' color="success" size='small' variant="contained" onClick={async () => {
+                    axios.post('http://localhost:8080/login/check', {
+                        account: accountIn,
+                        password: passwordIn
+                    }).then(function (response) {
+                        // handle success
+                        console.log(response);
+                        signin(response.data);
                     })
-            }} >Sign In</Button>
+                        .catch(function (error) {
+                            // handle error
+                            console.log(error);
+                        })
+                }} >Sign In</Button>
+            </center>
 
-            <Button className='signupB' color="success" variant="contained" size='small' onClick={() => { navigate('/signup') }}>Sign Up</Button>
 
 
 
@@ -87,3 +85,6 @@ export default function Login() {
     );
 }
 
+Login.propTypes = {
+    setToken: PropTypes.func.isRequired
+};
